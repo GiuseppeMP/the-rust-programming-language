@@ -101,3 +101,38 @@ You can generate the same project using cargo commands.
 1. To create a executable and not a library use: `cargo new hello-world --bin` 
 2. It should create a folder named `hello-world` containing subfolders `src`, `Cargo.toml`, and `Cargo.lock`.
 3. If you remove `--bin` from the command, it generates a library instead of an executable.
+
+## 05 lecture - _Rust in IntelliJ IDEA_ (I'll use Neovim)
+
+See further details:
+https://rsdlt.github.io/posts/rust-nvim-ide-guide-walkthrough-development-debug/#why-neovim-for-rust-development
+
+https://github.com/mrcjkb/rustaceanvim
+
+https://github.com/GiuseppeMP/my-nvim-config/commit/0d8ccb03d448a868cab995b6856da6930bb60f7f
+
+
+Using Lazy:
+```lua
+{
+    'mrcjkb/rustaceanvim',
+    tag = '3.15.0', -- Recommended
+    ft = { 'rust' },
+    config = function()
+        vim.g.rustaceanvim = {
+            -- Plugin configuration tools = { },
+            -- LSP configuration
+            server = {
+                on_attach = function(client, bufnr)
+                    -- you can also put keymaps in here
+                end,
+                settings = {
+                    -- rust-analyzer language server configuration
+                    ['rust-analyzer'] = { },
+                },
+            },
+            -- DAP configuration dap = { },
+        }
+    end
+}
+```
